@@ -127,7 +127,8 @@
 
         /* HERO */
         .hero-container {
-            height: 70vh;
+            height: auto;
+            min-height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -269,6 +270,7 @@
             .hamburger { display: flex; }
             .contact-wrapper { grid-template-columns: 1fr; }
             .big-logo { font-size: 5rem; }
+            .feature-grid { grid-template-columns: 1fr !important; }
         }
     </style>
 </head>
@@ -305,6 +307,17 @@
                     NVX adalah tim Valorant kompetitif yang dibangun di atas fondasi disiplin tinggi dan sinergi taktis. 
                     Tujuan utama kami adalah mendominasi kancah esports dengan permainan yang presisi dan strategi yang inovatif. 
                 </p>
+            </div>
+
+            <div class="feature-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; max-width: 700px; margin-top: 40px;">
+                <div style="background: var(--card-bg); padding: 30px; border: 1px solid var(--glass-border); text-align: left;">
+                    <p style="font-size: 0.65rem; color: var(--text-gray); letter-spacing: 2px; text-transform: uppercase;">Featured Player</p>
+                    <h3 style="font-size: 1.5rem; font-weight: 900; margin-top: 5px;">CZHSY_R</h3>
+                </div>
+                <div style="background: var(--card-bg); padding: 30px; border: 1px solid var(--glass-border); text-align: left;">
+                    <p style="font-size: 0.65rem; color: var(--text-gray); letter-spacing: 2px; text-transform: uppercase;">Recruitment Status</p>
+                    <h3 style="font-size: 1.5rem; font-weight: 900; margin-top: 5px; color: #00ff88;">STILL OPEN</h3>
+                </div>
             </div>
         </div>
     </section>
