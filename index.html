@@ -14,6 +14,7 @@
             --glass-border: rgba(255, 255, 255, 0.08);
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
+        
 
         /* --- STYLES TETAP SAMA --- */
         * {
@@ -44,11 +45,14 @@
             background: transparent;
             z-index: 2000;
         }
-        #progress-bar {
-            height: 100%;
-            background: #fff;
-            width: 0%;
-            transition: width 0.1s ease;
+        #progress-bar{
+        position:fixed;
+        top:0;
+        left:0;
+        height:3px;
+        width:0%;
+        background:#fff;
+        z-index:9999;
         }
 
         body::before {
@@ -67,30 +71,55 @@
             opacity: 0.4;
         }
 
-        /* --- PENYESUAIAN CURSOR BARU --- */
-        #custom-cursor {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: #fff;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10001;
-            transform: translate(-50%, -50%);
-            mix-blend-mode: difference;
-            transition: width 0.3s, height 0.3s, background-color 0.3s;
+       /* ===== ELEGANT MAGNETIC CURSOR ===== */
+    #cursor-dot{
+    position:fixed;
+    width:6px;
+    height:6px;
+    background:#fff;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:10001;
+    transform:translate(-50%,-50%);
+    mix-blend-mode:difference;
+}
+
+    #cursor-ring{
+    position:fixed;
+    width:36px;
+    height:36px;
+    border:1.5px solid rgba(255,255,255,0.6);
+    border-radius:50%;
+    pointer-events:none;
+    z-index:10000;
+    transform:translate(-50%,-50%);
+    transition:
+        width .25s ease,
+        height .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+}
+
+    /* hover state */
+    .cursor-hover #cursor-ring{
+    width:70px;
+    height:70px;
+    border-color:#fff;
+    background:rgba(255,255,255,0.06);
+}
+
+        /* Hover State */
+        .cursor-hover-active #custom-cursor {
+            width: 4px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.5);
         }
 
-        #cursor-glow {
-            position: fixed;
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10000;
-            transform: translate(-50%, -50%);
-            transition: transform 0.15s ease-out, width 0.3s, height 0.3s, border-color 0.3s;
+        .cursor-hover-active #cursor-glow {
+            width: 60px;
+            height: 60px;
+            border-color: rgba(255, 255, 255, 1);
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         /* Class untuk efek hover yang akan ditambah via JS */
@@ -382,15 +411,144 @@
             .big-logo { font-size: 5rem; }
             .live-info { flex-direction: column; gap: 10px; border-radius: 15px; }
         }
+
+        /* ===== CINEMATIC GRAIN ===== */
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:9999;
+    opacity:0.04;
+    background-image:url("https://grainy-gradients.vercel.app/noise.svg");
+    mix-blend-mode:overlay;
+}
+
+/* ===== MOVING RADIAL DEPTH ===== */
+#dynamic-bg{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(255,255,255,0.05), transparent 60%);
+    animation:bgMove 20s ease-in-out infinite alternate;
+}
+
+@keyframes bgMove{
+    0%{background-position:30% 30%,70% 70%;}
+    100%{background-position:60% 40%,40% 60%;}
+}
+
+/* ===== PREMIUM GLASS BOOST ===== */
+nav,.staff-card,.player-card,.contact-form{
+    backdrop-filter:blur(18px) saturate(120%);
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+/* ===== STAGGER ANIMATION ===== */
+.stagger-item{
+    opacity:0;
+    transform:translateY(40px) scale(0.98);
+    filter:blur(8px);
+    transition:all 0.6s cubic-bezier(.19,1,.22,1);
+}
+
+.stagger-item.show{
+    opacity:1;
+    transform:translateY(0) scale(1);
+    filter:blur(0);
+}
+
+/* ===== MOBILE ENHANCE ===== */
+@media(max-width:768px){
+    .nav-links{
+        backdrop-filter:blur(25px);
+        background:rgba(0,0,0,0.95);
+    }
+
+    .grid-container{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .player-card{
+        height:420px;
+    }
+
+    .hamburger span{
+        transition:all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1){
+        transform:rotate(45deg) translateY(8px);
+    }
+
+    .hamburger.active span:nth-child(2){
+        opacity:0;
+    }
+
+    .hamburger.active span:nth-child(3){
+        transform:rotate(-45deg) translateY(-8px);
+    }
+}
+    .reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all .8s cubic-bezier(.2,.6,.2,1);
+    }
+    .reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+    html{
+    scroll-behavior:smooth;
+    }
+    body{
+    scroll-snap-type:y mandatory;
+    }
+    section{
+    scroll-snap-align:start;
+    min-height:100vh;
+}
+
+.border-animated{
+position:relative;
+}
+.border-animated::before{
+content:"";
+position:absolute;
+inset:0;
+border-radius:inherit;
+padding:1px;
+background:linear-gradient(120deg,#ffffff33,#ffffff00,#ffffff33);
+background-size:200% 200%;
+animation:borderMove 6s linear infinite;
+-webkit-mask:
+linear-gradient(#000 0 0) content-box,
+linear-gradient(#000 0 0);
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+pointer-events:none;
+}
+
+@keyframes borderMove{
+0%{background-position:0% 50%;}
+100%{background-position:200% 50%;}
+}
+
     </style>
 </head>
 <body>
 
+    <div id="progress-bar"></div>
+
     <canvas id="bg-canvas"></canvas>
-    <div id="progress-container"><div id="progress-bar"></div></div>
     
-    <div id="custom-cursor"></div>
-    <div id="cursor-glow"></div>
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
 
     <nav>
         <div class="logo-box" onclick="showTab('home')" style="cursor: pointer;">NVX</div>
@@ -437,31 +595,31 @@
         <h2 style="font-size: 3rem; font-weight: 900; letter-spacing: -2px;">VALORANT LINEUP</h2>
         <p style="color: var(--text-gray); letter-spacing: 5px; margin-bottom: 20px;">THE MAIN ROSTER</p>
         <div class="grid-container">
-            <div class="player-card">
+            <div class="player-card tilt border-animated">
                 <img src="https://cdn.discordapp.com/attachments/1449676940469338145/1476513013283553311/rami-khdair-7-reyna.jpg?ex=69a16566&is=69a013e6&hm=9906f2f2e83520490853ff7a2e29426552b679c5ce12875f0d75fce3a74d40da&" class="agent-img">
                 <div class="player-info"><p class="player-role">Duelist - Reyna</p><p class="player-name">Debo</p></div>
             </div>
-            <div class="player-card">
+            <div class="player-card tilt border-animated">
                 <img src="https://cdn.discordapp.com/attachments/1449676940469338145/1476512028243005572/1149777.jpg?ex=69a1647b&is=69a012fb&hm=60b12eb135c0a68d444e7be91d887936a7c72496cfe628b4437f5dd764f76060&" class="agent-img">
                 <div class="player-info"><p class="player-role">IGL - Yoru</p><p class="player-name">Ken</p></div>
             </div>
-            <div class="player-card">
+            <div class="player-card tilt border-animated">
                 <img src="https://cdn.discordapp.com/attachments/1449676940469338145/1476512001764364339/1081933.jpg?ex=69a16475&is=69a012f5&hm=3cc63356e10db175f012edeea41fef7d0134e9a8b99519ba8674203164ad6d75&" class="agent-img">
                 <div class="player-info"><p class="player-role">Flex/IGL - Jett</p><p class="player-name">czhsy_r</p></div>
             </div>
-            <div class="player-card">
+            <div class="player-card tilt border-animated">
                 <img src="https://cdn.discordapp.com/attachments/1449676940469338145/1476512080965144709/1360645.jpeg?ex=69a16488&is=69a01308&hm=887c92af16395f982842ac169e5b270ec290ea92fb813421f851495bb2d5d01a&" class="agent-img">
                 <div class="player-info"><p class="player-role">Controller - Clove</p><p class="player-name">Zymq</p></div>
             </div>
-            <div class="player-card">
+            <div class="player-card tilt border-animated">
                 <img src="https://cdn.discordapp.com/attachments/1449676940469338145/1476531329234505769/1298923.png?ex=69a17675&is=69a024f5&hm=4c8c41993bae9c96f791bdc6a5a4e79003d652d475dea44aded3a97e15735973&" class="agent-img">
                 <div class="player-info"><p class="player-role">Sentinel/Initiator - Chamber</p><p class="player-name">Slitherin</p></div>
             </div>
-            <div class="player-card">
+            <div class="player-card tilt border-animated">
                 <img src="https://cdn.discordapp.com/attachments/1449676940469338145/1476512056059367567/1370812.jpeg?ex=69a16482&is=69a01302&hm=2fc6271ad5529d1f591ed838a853a3a8a96b8261d9e0a8aab39e97757e10bc74&" class="agent-img">
                 <div class="player-info"><p class="player-role">Flex - Omen</p><p class="player-name">Dam</p></div>
             </div>
-            <div class="player-card">
+            <div class="player-card tilt border-animated">
                 <img src="https://cdn.discordapp.com/attachments/1449676940469338145/1476546402137145344/1274317.jpg?ex=69a1847f&is=69a032ff&hm=7c82b0451c572b0ee46fb4f7ed5df5258a16496446093f372ad58766f31889f0&" class="agent-img">
                 <div class="player-info"><p class="player-role">Flex - Sentinel</p><p class="player-name">Supermarcy_</p></div>
             </div>
@@ -471,31 +629,31 @@
     <section id="minecraft">
         <h2 style="font-size: 3rem; font-weight: 900;">MINECRAFT DIVISION</h2>
         <div class="grid-container">
-            <div class="staff-card"><h3>KenBROHH</h3><span class="badge-pvp">Crystal PVP</span></div>
-            <div class="staff-card"><h3>Xavier</h3><span class="badge-pvp">Crystal PVP</span></div>
-            <div class="staff-card"><h3>MYS16</h3><span class="badge-pvp">Crystal PVP</span></div>
-            <div class="staff-card"><h3>Void</h3><span class="badge-pvp">Crystal PVP</span></div>
-            <div class="staff-card"><h3>Supermarcy_</h3><span class="badge-pvp">Crystal PVP</span></div>
+            <div class="staff-card tilt border-animated"><h3>KenBROHH</h3><span class="badge-pvp">Crystal PVP</span></div>
+            <div class="staff-card tilt border-animated"><h3>Xavier</h3><span class="badge-pvp">Crystal PVP</span></div>
+            <div class="staff-card tilt border-animated"><h3>MYS16</h3><span class="badge-pvp">Crystal PVP</span></div>
+            <div class="staff-card tilt border-animated"><h3>Void</h3><span class="badge-pvp">Crystal PVP</span></div>
+            <div class="staff-card tilt border-animated"><h3>Supermarcy_</h3><span class="badge-pvp">Crystal PVP</span></div>
         </div>
     </section>
 
     <section id="backup">
         <h2 style="font-size: 3rem; font-weight: 900;">MEMBERS</h2>
         <div class="grid-container">
-            <div class="staff-card"><h3>Aufa</h3><p>Flex</p></div>
-            <div class="staff-card"><h3>Zells</h3><p>Flex</p></div>
-            <div class="staff-card"><h3>Ryn</h3><p>Flex</p></div>
-            <div class="staff-card"><h3>Xavier</h3><p>Flex / Duelist Sub</p></div>
+            <div class="staff-card tilt border-animated"><h3>Aufa</h3><p>Flex</p></div>
+            <div class="staff-card tilt border-animated"><h3>Zells</h3><p>Flex</p></div>
+            <div class="staff-card tilt border-animated"><h3>Ryn</h3><p>Flex</p></div>
+            <div class="staff-card tilt border-animated"><h3>Xavier</h3><p>Flex / Duelist Sub</p></div>
         </div>
     </section>
 
     <section id="management">
         <h2 style="font-size: 3rem; font-weight: 900;">MANAGEMENT TEAM</h2>
         <div class="grid-container">
-            <div class="staff-card"><h3>Ken</h3><p>Team Leader</p></div>
-            <div class="staff-card"><h3>Zymq</h3><p>Team Coach</p></div>
-            <div class="staff-card"><h3>czhsy_r</h3><p>Team Coach</p></div>
-            <div class="staff-card"><h3>Slitherin</h3><p>Owner</p></div>
+            <div class="staff-card tilt border-animated"><h3>Ken</h3><p>Team Leader</p></div>
+            <div class="staff-card tilt border-animated"><h3>Zymq</h3><p>Team Coach</p></div>
+            <div class="staff-card tilt border-animated"><h3>czhsy_r</h3><p>Team Coach</p></div>
+            <div class="staff-card tilt border-animated"><h3>Slitherin</h3><p>Owner</p></div>
         </div>
     </section>
 
@@ -586,68 +744,62 @@
         }
         animate();
 
-        /* --- HOVER SOUND EFFECT --- */
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        function playHoverSound() {
-            const oscillator = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            oscillator.type = 'sine';
-            oscillator.frequency.setValueAtTime(440, audioCtx.currentTime); 
-            oscillator.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.05);
-            gainNode.gain.setValueAtTime(0.02, audioCtx.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
-            oscillator.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            oscillator.start();
-            oscillator.stop(audioCtx.currentTime + 0.1);
-        }
+/* ===== ELEGANT MAGNETIC CURSOR ===== */
+const dot = document.getElementById("cursor-dot");
+const ring = document.getElementById("cursor-ring");
 
-        document.querySelectorAll('a, button, .player-card, .staff-card').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                if(audioCtx.state === 'suspended') audioCtx.resume();
-                playHoverSound();
-            });
-        });
+let mouseX = 0, mouseY = 0;
+let dotX = 0, dotY = 0;
+let ringX = 0, ringY = 0;
 
-        /* --- LOGIKA CUSTOM CURSOR BARU (Smooth & Interactive) --- */
-        const cursor = document.getElementById('custom-cursor');
-        const glow = document.getElementById('cursor-glow');
-        
-        let mouseX = 0;
-        let mouseY = 0;
-        let cursorX = 0;
-        let cursorY = 0;
-        let glowX = 0;
-        let glowY = 0;
+window.addEventListener("mousemove", e=>{
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
 
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
+function lerp(a,b,n){ return (1-n)*a + n*b; }
 
-        function lerp(start, end, factor) {
-            return start + (end - start) * factor;
-        }
+function animateCursor(){
+    dotX = lerp(dotX, mouseX, 0.25);
+    dotY = lerp(dotY, mouseY, 0.25);
 
-        function updateCursor() {
-            // Smooth lerping untuk kursor
-            cursorX = lerp(cursorX, mouseX, 0.2);
-            cursorY = lerp(cursorY, mouseY, 0.2);
-            
-            // Sedikit lebih lambat untuk outer glow agar ada efek delay premium
-            glowX = lerp(glowX, mouseX, 0.12);
-            glowY = lerp(glowY, mouseY, 0.12);
+    ringX = lerp(ringX, mouseX, 0.12);
+    ringY = lerp(ringY, mouseY, 0.12);
 
-            cursor.style.left = `${cursorX}px`;
-            cursor.style.top = `${cursorY}px`;
-            glow.style.left = `${glowX}px`;
-            glow.style.top = `${glowY}px`;
+    dot.style.left = dotX+"px";
+    dot.style.top  = dotY+"px";
 
-            requestAnimationFrame(updateCursor);
-        }
-        updateCursor();
+    ring.style.left = ringX+"px";
+    ring.style.top  = ringY+"px";
 
-        // Cursor interaction pada hover elemen
+    requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+/* hover grow */
+const magneticItems = document.querySelectorAll(
+    ".player-card, .staff-card, button, a, .logo-box"
+);
+
+magneticItems.forEach(item=>{
+    item.addEventListener("mouseenter",()=>{
+        document.body.classList.add("cursor-hover");
+    });
+
+    item.addEventListener("mouseleave",()=>{
+        document.body.classList.remove("cursor-hover");
+        item.style.transform = "";
+    });
+
+    item.addEventListener("mousemove", e=>{
+        const rect = item.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width/2;
+        const y = e.clientY - rect.top - rect.height/2;
+        item.style.transform = `translate(${x*0.05}px, ${y*0.05}px)`;
+    });
+});
+
+        // Interaksi saat menyentuh elemen interaktif
         const interactiveElements = document.querySelectorAll('a, button, .player-card, .staff-card, .logo-box');
         interactiveElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
@@ -680,22 +832,26 @@
         }
         window.onload = typeWriter;
 
-        /* --- PARALLAX HOVER PADA CARD --- */
-        document.querySelectorAll('.player-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
-            });
-        });
+        /* ===== IMPROVED 3D TILT ===== */
+document.querySelectorAll('.player-card').forEach(card => {
+
+    card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+
+        const rotateX = (0.5 - y) * 12;
+        const rotateY = (x - 0.5) * 12;
+
+        card.style.transform =
+        `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.transform =
+        `perspective(1200px) rotateX(0deg) rotateY(0deg) scale(1)`;
+    });
+});
 
         /* --- LOGIC BAWAAN --- */
         function updateClock() {
@@ -785,35 +941,23 @@
             });
         });
 
-        /* --- UPGRADE CURSOR KE GAMBAR CUSTOM --- */
-const cursorImg = new Image();
-cursorImg.src = "https://i.ibb.co/cK1BZ7yK/image.jpg"; // Link gambar cursor kamu
-cursorImg.crossOrigin = "anonymous";
 
-cursorImg.onload = () => {
-    const cursor = document.getElementById('custom-cursor');
-    
-    // Ganti background ke gambar cursor
-    cursor.style.background = `url(${cursorImg.src}) center/contain no-repeat`;
-    cursor.style.backgroundSize = "contain";
-    cursor.style.width = "28px";      // Sesuaikan ukuran
-    cursor.style.height = "28px";     // Sesuaikan ukuran  
-    cursor.style.borderRadius = "0";  // Hilangkan bentuk lingkaran
-    cursor.style.mixBlendMode = "normal"; // Gambar tampil normal
-    
-    // Hover effect tetap jalan (besar + transparan)
-    const style = document.createElement('style');
-    style.textContent = `
-        .cursor-hover-active #custom-cursor {
-            width: 45px !important;
-            height: 45px !important;
-            background-color: rgba(255,255,255,0.1) !important;
-            background-image: url(${cursorImg.src}) !important;
+        const reveals = document.querySelectorAll(".player-card, .staff-card");
+
+        const observer = new IntersectionObserver((entries)=>{
+        entries.forEach((entry,i)=>{
+        if(entry.isIntersecting){
+        setTimeout(()=>{
+        entry.target.classList.add("active");
+        }, i*120);
         }
-    `;
-    document.head.appendChild(style);
-};
+        });
+        },{threshold:0.15});
 
+        reveals.forEach(el=>{
+        el.classList.add("reveal");
+        observer.observe(el);
+    });
         
     </script>
 </body>
