@@ -189,9 +189,9 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .hero-container {
-            height: auto;
-            min-height: 70vh;
+        #home .hero-container {
+            min-height: auto;
+            padding-bottom: 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -255,14 +255,22 @@
         }
 
         .team-desc h2 { font-weight: 800; font-size: 1.4rem; margin-bottom: 15px; letter-spacing: 2px; }
+        .section-title{
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 900;
+        margin-bottom: 40px;
+        letter-spacing: 2px;
+        }
         .team-desc p { color: var(--text-gray); font-size: 1rem; line-height: 1.8; }
 
         .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
-            perspective: 1000px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 40px;
+        max-width: 1100px;
+        margin: 0 auto; /* INI YANG BIKIN CENTER */
+        justify-items: center; /* Center isi grid */
         }
 
         .player-card {
@@ -653,10 +661,8 @@ body::after{
                     <a onclick="showTab('minecraft')">Minecraft</a>
                 </div>
             </div>
-            <a onclick="showTab('backup')" id="nav-backup">Members</a>
-            <a onclick="showTab('management')" id="nav-management">Management</a>
             <a onclick="showTab('qna')" id="nav-qna">Q&A</a>
-            <a onclick="showTab('contact')" id="nav-contact">Contact</a>
+            <a onclick="showTab('account')" id="nav-account">Member Account</a>
         </div>
         <div class="hamburger" onclick="toggleMenu()">
             <span></span><span></span><span></span>
@@ -664,24 +670,121 @@ body::after{
     </nav>
 
     <section id="home" class="active">
-        <div class="hero-container">
-            <div class="live-info">
-                <p><span class="dot">●</span> Status: <span>Active</span></p>
-                <p>Region: <span>Jakarta, ID</span></p>
-                <p>Time: <span id="clock">00:00:00</span></p>
-            </div>
 
-            <h1 class="big-logo">NVX</h1>
-            <p class="tagline" id="typewriter-text"></p>
-            <div class="team-desc">
-                <h2>TENTANG NVX</h2>
-                <p>
-                    NVX adalah tim Valorant kompetitif yang dibangun di atas fondasi disiplin tinggi dan sinergi taktis. 
-                    Tujuan utama kami adalah mendominasi kancah esports dengan permainan yang presisi dan strategi yang inovatif. 
-                </p>
+    <div class="hero-container">
+
+        <!-- LIVE INFO -->
+        <div class="live-info">
+            <p><span class="dot">●</span> Status: <span>Active</span></p>
+            <p>Region: <span>Jakarta, ID</span></p>
+            <p>Time: <span id="clock">00:00:00</span></p>
+        </div>
+
+        <!-- LOGO -->
+        <h1 class="big-logo">NVX</h1>
+        <p class="tagline" id="typewriter-text"></p>
+
+        <!-- TENTANG -->
+        <div class="team-desc">
+            <h2>TENTANG NVX</h2>
+            <p>
+                NVX adalah tim Valorant kompetitif yang dibangun di atas fondasi disiplin tinggi dan sinergi taktis. 
+                Tujuan utama kami adalah mendominasi kancah esports dengan permainan yang presisi dan strategi yang inovatif.
+            </p>
+        </div>
+
+        <!-- MANAGEMENT TEAM -->
+        <div style="margin-top:100px; width:100%;">
+            <h2 class="section-title">
+            MANAGEMENT TEAM
+            </h2>
+
+            <div class="grid-container">
+                <div class="staff-card tilt border-animated reveal">
+                    <h3>Ken</h3>
+                    <p>Team Leader</p>
+                </div>
+
+                <div class="staff-card tilt border-animated reveal">
+                    <h3>Zymq</h3>
+                    <p>Team Coach</p>
+                </div>
+
+                <div class="staff-card tilt border-animated reveal">
+                    <h3>czhsy_r</h3>
+                    <p>Team Coach</p>
+                </div>
+
+                <div class="staff-card tilt border-animated reveal">
+                    <h3>Slitherin</h3>
+                    <p>Owner</p>
+                </div>
             </div>
         </div>
-    </section>
+
+        <!-- MEMBERS -->
+        <div style="margin-top:100px; width:100%;">
+            <h2 class="section-title">
+            MEMBERS
+            </h2>
+
+            <div class="grid-container">
+                <div class="staff-card tilt border-animated reveal">
+                    <h3>Aufa</h3>
+                    <p>Flex</p>
+                </div>
+
+                <div class="staff-card tilt border-animated reveal">
+                    <h3>Zells</h3>
+                    <p>Flex</p>
+                </div>
+
+                <div class="staff-card tilt border-animated reveal">
+                    <h3>Ryn</h3>
+                    <p>Flex</p>
+                </div>
+
+                <div class="staff-card tilt border-animated reveal">
+                    <h3>Xavier</h3>
+                    <p>Flex / Duelist Sub</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMMUNITY -->
+        <div style="margin-top:100px; border-top:1px solid rgba(255,255,255,0.08); padding-top:60px; width:100%; max-width:900px;">
+    
+            <h2 style="font-size:2rem; font-weight:900; margin-bottom:30px;">
+                COMMUNITY
+            </h2>
+
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <a href="https://discord.gg/4NN2zpWg" target="_blank">
+                    Discord: Join Community
+                </a>
+            </div>
+
+            <div style="margin-top:60px;">
+                <h2 style="font-size:2rem; font-weight:900; margin-bottom:20px;">
+                    FURTHER INFORMATION
+                </h2>
+
+                <p style="color:#666; margin-bottom:10px;">
+                    For more details, please DM the Discord below:
+                </p>
+
+                <a href="https://discord.com/users/940824287743447101" 
+                   target="_blank" 
+                   style="color:#5865F2; font-weight:800;">
+                   @940824287743447101
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+    
 
     <section id="primary">
         <h2 style="font-size: 3rem; font-weight: 900; letter-spacing: -2px;">VALORANT LINEUP</h2>
@@ -752,25 +855,6 @@ body::after{
         </div>
     </section>
 
-    <section id="backup">
-        <h2 style="font-size: 3rem; font-weight: 900;">MEMBERS</h2>
-        <div class="grid-container">
-            <div class="staff-card tilt border-animated reveal"><h3>Aufa</h3><p>Flex</p></div>
-            <div class="staff-card tilt border-animated reveal"><h3>Zells</h3><p>Flex</p></div>
-            <div class="staff-card tilt border-animated reveal"><h3>Ryn</h3><p>Flex</p></div>
-            <div class="staff-card tilt border-animated reveal"><h3>Xavier</h3><p>Flex / Duelist Sub</p></div>
-        </div>
-    </section>
-
-    <section id="management">
-        <h2 style="font-size: 3rem; font-weight: 900;">MANAGEMENT TEAM</h2>
-        <div class="grid-container">
-            <div class="staff-card tilt border-animated reveal"><h3>Ken</h3><p>Team Leader</p></div>
-            <div class="staff-card tilt border-animated reveal"><h3>Zymq</h3><p>Team Coach</p></div>
-            <div class="staff-card tilt border-animated reveal"><h3>czhsy_r</h3><p>Team Coach</p></div>
-            <div class="staff-card tilt border-animated reveal"><h3>Slitherin</h3><p>Owner</p></div>
-        </div>
-    </section>
 
     <section id="qna">
         <div style="max-width: 600px; margin: 0 auto; text-align: center;">
@@ -783,15 +867,9 @@ body::after{
         </div>
     </section>
 
-    <section id="contact">
+    <section id="account">
         <div class="contact-wrapper">
             <div class="social-links">
-                <h3>OUR COMMUNITY</h3>
-                <a href="https://discord.gg/4NN2zpWg" target="_blank">Discord: Join Community</a>
-                <br>
-                <h3>FURTHER INFORMATION</h3>
-                <p style="color: #666; margin-bottom: 10px;">For more details, please DM the Discord below:</p>
-                <a href="https://discord.com/users/940824287743447101" target="_blank" style="color: #5865F2; font-weight: 800;">@940824287743447101</a>
                 <br>
                 <h3>TIKTOK NVX MEMBER</h3>
                 <a href="https://www.tiktok.com/@ryukengremory?lang=en" target="_blank">Ken</a>
@@ -822,6 +900,41 @@ body::after{
             <p id="modalDesc" class="modal-desc"></p> 
         </div> 
     </div>
+
+    <!-- HOME COMMUNITY POPUP -->
+<div id="homePopup" class="modal">
+    <div class="modal-content border-animated">
+        <span class="modal-close" onclick="closeHomePopup()">✕</span>
+
+        <h2 style="font-weight:900; margin-bottom:25px;">NVX COMMUNITY</h2>
+
+        <div style="margin-bottom:35px;">
+            <a href="https://discord.gg/4NN2zpWg" 
+               target="_blank"
+               style="display:inline-block;
+                      padding:15px 30px;
+                      background:#5865F2;
+                      color:#fff;
+                      font-weight:800;
+                      text-decoration:none;
+                      border-radius:4px;">
+                JOIN DISCORD
+            </a>
+        </div>
+
+        <h3 style="margin-bottom:15px;">FURTHER INFORMATION</h3>
+
+        <p style="color:#888; margin-bottom:10px;">
+            For more details, DM:
+        </p>
+
+        <a href="https://discord.com/users/940824287743447101"
+           target="_blank"
+           style="color:#5865F2; font-weight:800;">
+            @940824287743447101
+        </a>
+    </div>
+</div>
 
     <script>
         /* --- BACKGROUND PARTICLES --- */
@@ -1288,6 +1401,35 @@ function deactivateWarp(){
 
     galaxyCanvas.style.filter = "none";
 }
+
+
+// ===== HOME POPUP AUTO SHOW =====
+let homePopup;
+
+window.addEventListener("load", ()=>{
+    homePopup = document.getElementById("homePopup");
+
+    setTimeout(()=>{
+        openHomePopup();
+    }, 1500);
+});
+
+function openHomePopup(){
+    homePopup.classList.add("active");
+    document.body.classList.add("modal-open");
+}
+
+function closeHomePopup(){
+    homePopup.classList.remove("active");
+    document.body.classList.remove("modal-open");
+}
+
+// Tutup kalau klik luar
+document.getElementById("homePopup").addEventListener("click", function(e){
+    if(e.target.id === "homePopup"){
+        closeHomePopup();
+    }
+});
 
     </script>
 </body>
