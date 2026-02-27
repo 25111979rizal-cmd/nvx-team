@@ -678,6 +678,99 @@ body.minecraft-theme .big-logo{
     filter: drop-shadow(0 0 40px rgba(0,255,120,0.4));
 }
 
+/* BACKGROUND MEMBER */
+.staff-card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* overlay gelap supaya teks terbaca */
+.staff-card::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background: rgba(0,0,0,0.5);
+    z-index:0;
+}
+
+.staff-card * {
+    position: relative;
+    z-index:1;
+}
+
+/* ===== STAFF BACKGROUND IMAGE ===== */
+.staff-card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* overlay biar teks kebaca */
+.staff-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 0;
+}
+
+.staff-card * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== MEMBER IMAGES ===== */
+.staff-card.meliyexo {
+    background-image: url("https://raw.githubusercontent.com/25111979rizal-cmd/nvx-assets/refs/heads/main/image0.png");
+}
+
+.staff-card.zells {
+    background-image: url("https://raw.githubusercontent.com/25111979rizal-cmd/nvx-assets/refs/heads/main/image0.png");
+}
+
+.staff-card.ryn {
+    background-image: url("https://raw.githubusercontent.com/25111979rizal-cmd/nvx-assets/refs/heads/main/image0.png");
+}
+
+.staff-card.xavier {
+    background-image: url("https://raw.githubusercontent.com/25111979rizal-cmd/nvx-assets/refs/heads/main/image0.png");
+}
+
+.staff-card.ken {
+    background-image: url("https://raw.githubusercontent.com/25111979rizal-cmd/nvx-assets/refs/heads/main/image0.png");
+}
+
+.staff-card.zymq {
+    background-image: url("https://raw.githubusercontent.com/25111979rizal-cmd/nvx-assets/refs/heads/main/image0.png");
+}
+
+.staff-card.czhsy_r {
+    background-image: url("https://raw.githubusercontent.com/25111979rizal-cmd/nvx-assets/refs/heads/main/image0.png");
+}
+
+.staff-card.debo {
+    background-image: url("https://raw.githubusercontent.com/25111979rizal-cmd/nvx-assets/refs/heads/main/image0.png");
+}
+
+.staff-card.void {
+    background-image: url("https://raw.githubusercontent.com/25111979rizal-cmd/nvx-assets/refs/heads/main/image0.png");
+}
+
+.staff-card.supermarcy {
+    background-image: url("https://raw.githubusercontent.com/25111979rizal-cmd/nvx-assets/refs/heads/main/image0.png");
+}
+
+.staff-card.damndr {
+    background-image: url("https://raw.githubusercontent.com/25111979rizal-cmd/nvx-assets/refs/heads/main/image0.png");
+}
+
     </style>
 </head>
 <body>
@@ -767,32 +860,65 @@ body.minecraft-theme .big-logo{
 
         <!-- MEMBERS -->
         <div style="margin-top:100px; width:100%;">
-            <h2 class="section-title">
-            MEMBERS
-            </h2>
+    <h2 class="section-title">MEMBERS</h2>
 
-            <div class="grid-container">
-                <div class="staff-card tilt border-animated reveal">
-                    <h3>Aufa</h3>
-                    <p>Flex</p>
-                </div>
-
-                <div class="staff-card tilt border-animated reveal">
-                    <h3>Zells</h3>
-                    <p>Flex</p>
-                </div>
-
-                <div class="staff-card tilt border-animated reveal">
-                    <h3>Ryn</h3>
-                    <p>Flex</p>
-                </div>
-
-                <div class="staff-card tilt border-animated reveal">
-                    <h3>Xavier</h3>
-                    <p>Flex / Duelist Sub</p>
-                </div>
-            </div>
+    <div class="grid-container">
+        <div class="staff-card tilt border-animated reveal meliyexo">
+            <h3>Meliyexo</h3>
+            <p>Flex</p>
         </div>
+
+        <div class="staff-card tilt border-animated reveal zells">
+            <h3>Zells</h3>
+            <p>Flex / Sentinel Sub</p>
+        </div>
+
+        <div class="staff-card tilt border-animated reveal ryn">
+            <h3>Ryn</h3>
+            <p>Flex / Initiator Sub</p>
+        </div>
+
+        <div class="staff-card tilt border-animated reveal xavier">
+            <h3>Xavier</h3>
+            <p>Flex / Duelist Sub</p>
+        </div>
+
+        <div class="staff-card tilt border-animated reveal ken">
+            <h3>Ken</h3>
+            <p>Flex / Duelist Sub</p>
+        </div>
+
+        <div class="staff-card tilt border-animated reveal zymq">
+            <h3>Zymq</h3>
+            <p>Flex / Duelist Sub</p>
+        </div>
+
+        <div class="staff-card tilt border-animated reveal czhsy_r">
+            <h3>czhsy_r</h3>
+            <p>Flex / Duelist Sub</p>
+        </div>
+
+        <div class="staff-card tilt border-animated reveal debo">
+            <h3>Debo</h3>
+            <p>Flex / Duelist Sub</p>
+        </div>
+
+        <div class="staff-card tilt border-animated reveal void">
+            <h3>Void</h3>
+            <p>Flex / Duelist Sub</p>
+        </div>
+
+        <div class="staff-card tilt border-animated reveal supermarcy">
+            <h3>Supermarcy_</h3>
+            <p>Flex / Duelist Sub</p>
+        </div>
+
+        <div class="staff-card tilt border-animated reveal damndr">
+            <h3>DamnDrxz</h3>
+            <p>Flex / Duelist Sub</p>
+        </div>
+    </div>
+</div>
 
         <!-- COMMUNITY -->
         <div style="margin-top:100px; border-top:1px solid rgba(255,255,255,0.08); padding-top:60px; width:100%; max-width:900px;">
@@ -872,7 +998,7 @@ body.minecraft-theme .big-logo{
                 <img src="https://cdn.discordapp.com/attachments/1449676940469338145/1476512056059367567/1370812.jpeg?ex=69a16482&is=69a01302&hm=2fc6271ad5529d1f591ed838a853a3a8a96b8261d9e0a8aab39e97757e10bc74&" class="agent-img">
                 <div class="player-info">
                     <p class="player-role">Flex - Omen</p>
-                    <p class="player-name">Dam</p>
+                    <p class="player-name">DamnDrxz</p>
                 </div>
             </div>
             <div class="player-card tilt border-animated reveal" onclick="openModal('Supermarcy_')">
