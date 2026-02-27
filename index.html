@@ -635,6 +635,49 @@ body::after{
     background: radial-gradient(circle at center, #0a0a12, #050505 70%);
 }
 
+/* ===== DIVISION COLOR THEME ===== */
+
+/* Default reset */
+body.valorant-theme .bg-effect,
+body.minecraft-theme .bg-effect{
+    animation: breathe 8s ease-in-out infinite;
+}
+
+/* 🔴 VALORANT RED */
+body.valorant-theme .bg-effect{
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(255,0,60,0.15),
+        transparent 65%
+    );
+}
+
+body.valorant-theme #cursor-ring{
+    border-color: rgba(255,60,60,0.8);
+}
+
+body.valorant-theme .big-logo{
+    filter: drop-shadow(0 0 40px rgba(255,0,60,0.4));
+}
+
+
+/* 🟢 MINECRAFT GREEN */
+body.minecraft-theme .bg-effect{
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(0,255,120,0.15),
+        transparent 65%
+    );
+}
+
+body.minecraft-theme #cursor-ring{
+    border-color: rgba(0,255,120,0.8);
+}
+
+body.minecraft-theme .big-logo{
+    filter: drop-shadow(0 0 40px rgba(0,255,120,0.4));
+}
+
     </style>
 </head>
 <body>
@@ -1134,24 +1177,38 @@ body::after{
         }
 
         function showTab(tabId) {
-            const links = document.querySelectorAll('.nav-links a, .dropbtn');
-            links.forEach(link => link.classList.remove('active'));
-            
-            if(tabId === 'primary' || tabId === 'minecraft') {
-                document.getElementById('dropBtn').classList.add('active');
-            } else {
-                const activeLink = document.getElementById('nav-' + tabId);
-                if(activeLink) activeLink.classList.add('active');
-            }
 
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => section.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
+    // RESET THEME
+    document.body.classList.remove("valorant-theme");
+    document.body.classList.remove("minecraft-theme");
 
-            document.getElementById('navLinks').classList.remove('active');
-            document.getElementById("myDropdown").classList.remove("show");
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
+    // APPLY THEME
+    if(tabId === "primary"){
+        document.body.classList.add("valorant-theme");
+    }
+
+    if(tabId === "minecraft"){
+        document.body.classList.add("minecraft-theme");
+    }
+
+    const links = document.querySelectorAll('.nav-links a, .dropbtn');
+    links.forEach(link => link.classList.remove('active'));
+    
+    if(tabId === 'primary' || tabId === 'minecraft') {
+        document.getElementById('dropBtn').classList.add('active');
+    } else {
+        const activeLink = document.getElementById('nav-' + tabId);
+        if(activeLink) activeLink.classList.add('active');
+    }
+
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => section.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+
+    document.getElementById('navLinks').classList.remove('active');
+    document.getElementById("myDropdown").classList.remove("show");
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
 
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
